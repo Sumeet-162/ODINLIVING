@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				display: ['var(--font-display)'],
+				body: ['var(--font-body)']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -51,6 +55,16 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				earth: {
+					warm: 'hsl(var(--earth-warm))',
+					deep: 'hsl(var(--earth-deep))'
+				},
+				ceramic: {
+					white: 'hsl(var(--ceramic-white))'
+				},
+				natural: {
+					beige: 'hsl(var(--natural-beige))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
