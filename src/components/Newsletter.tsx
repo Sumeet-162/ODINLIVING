@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -12,76 +10,43 @@ const Newsletter = () => {
     if (email) {
       toast({
         title: "Thank you for subscribing!",
-        description: "You'll receive updates about our latest collections and special offers.",
+        description: "You'll receive updates about our latest collections.",
       });
       setEmail("");
     }
   };
 
   return (
-    <section className="py-16 bg-primary/5">
-      <div className="container px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mb-4">
-            Join Our Community
+    <section className="py-16 bg-gray-50">
+      <div className="container px-4 max-w-6xl mx-auto">
+        <div className="max-w-lg mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4">
+            Stay Updated
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Stay updated on new collections, special offers, and the stories behind our creations. 
-            Subscribe to our newsletter for exclusive access.
+          <p className="text-base text-gray-600 mb-8 font-light">
+            Subscribe to receive updates on new collections and special offers
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <Input
+          <form onSubmit={handleSubmit} className="flex gap-2 max-w-sm mx-auto">
+            <input
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 h-12 px-4 bg-background border-border"
+              className="flex-1 px-4 py-3 text-sm border border-gray-300 bg-white focus:outline-none focus:border-gray-500 transition-colors"
               required
             />
-            <Button 
+            <button 
               type="submit" 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12"
+              className="bg-gray-900 text-white px-6 py-3 text-sm hover:bg-gray-800 transition-colors"
             >
               Subscribe
-            </Button>
+            </button>
           </form>
 
-          <p className="text-xs text-muted-foreground mt-4">
-            By subscribing, you agree to our privacy policy. Unsubscribe at any time.
+          <p className="text-xs text-gray-500 mt-4">
+            By subscribing, you agree to our privacy policy.
           </p>
-
-          {/* Benefits */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-primary text-xl">✨</span>
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">Exclusive Access</h3>
-              <p className="text-sm text-muted-foreground">
-                Be the first to see new collections and limited releases
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-primary text-xl">💝</span>
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">Special Offers</h3>
-              <p className="text-sm text-muted-foreground">
-                Receive exclusive discounts and member-only promotions
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-primary text-xl">📖</span>
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">Behind the Scenes</h3>
-              <p className="text-sm text-muted-foreground">
-                Learn about our artisans and the pottery-making process
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

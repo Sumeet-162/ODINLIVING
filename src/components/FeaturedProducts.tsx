@@ -1,6 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Heart, Star } from "lucide-react";
+import { Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import bowlImage from "@/assets/ceramic-bowl.jpg";
 import plateImage from "@/assets/ceramic-plate.jpg";
 import mugImage from "@/assets/ceramic-mug.jpg";
@@ -9,149 +8,163 @@ import setImage from "@/assets/ceramic-set.jpg";
 const featuredProducts = [
   {
     id: 1,
-    name: "Handcrafted Bowl",
-    price: 45,
+    name: "ODIN Home Dining Bowl Set",
+    price: "₦25,000",
+    priceUSD: "$62",
     originalPrice: null,
-    rating: 4.8,
-    reviews: 124,
-    image: bowlImage,
-    description: "Perfect for soups and salads",
+    originalPriceUSD: null,
+    rating: 4.9,
+    reviews: 87,
+    image: "https://raw.githubusercontent.com/Sumeet-162/ceramicimages/refs/heads/main/il_570xN.4116517537_74rd.jpg",
+    description: "Perfect for home & restaurant",
     badge: "Bestseller"
   },
   {
     id: 2,
-    name: "Artisan Plate",
-    price: 55,
-    originalPrice: 68,
-    rating: 4.9,
-    reviews: 89,
-    image: plateImage,
-    description: "Ideal for main courses",
+    name: "ODIN Restaurant Collection",
+    price: "₦38,500",
+    priceUSD: "$95",
+    originalPrice: "₦45,000",
+    originalPriceUSD: "$111",
+    rating: 4.8,
+    reviews: 63,
+    image: "https://raw.githubusercontent.com/Sumeet-162/ceramicimages/refs/heads/main/istockphoto-1331026574-612x612.jpg",
+    description: "Professional grade ceramic",
     badge: "Sale"
   },
   {
     id: 3,
-    name: "Modern Mug",
-    price: 35,
+    name: "ODIN Living Artisan Mugs",
+    price: "₦18,000",
+    priceUSD: "$44",
     originalPrice: null,
+    originalPriceUSD: null,
     rating: 4.7,
-    reviews: 156,
-    image: mugImage,
-    description: "Great for coffee and tea",
+    reviews: 124,
+    image: "https://raw.githubusercontent.com/Sumeet-162/ceramicimages/refs/heads/main/images.jpg",
+    description: "Perfect for daily rituals",
     badge: null
   },
   {
     id: 4,
-    name: "Complete Set",
-    price: 180,
-    originalPrice: 220,
+    name: "ODIN Heritage Tea Service",
+    price: "₦65,000",
+    priceUSD: "$161",
+    originalPrice: "₦75,000",
+    originalPriceUSD: "$186",
     rating: 4.9,
-    reviews: 67,
-    image: setImage,
-    description: "Service for 4 people",
+    reviews: 45,
+    image: "https://raw.githubusercontent.com/Sumeet-162/ceramicimages/refs/heads/main/ChatGPT%20Image%20Aug%205%2C%202025%2C%2010_52_00%20PM.png",
+    description: "Complete tea service set",
     badge: "Limited"
   }
 ];
 
 const FeaturedProducts = () => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
-    <section className="py-16 bg-secondary/30">
-      <div className="container px-4">
+    <section className="py-16 bg-gray-50">
+      <div className="container px-4 max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mb-4">
-            Featured Products
+          <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4">
+            ODIN Collections
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our most loved pieces, crafted with passion and attention to detail. 
-            Each item is a testament to traditional pottery artistry.
+          <p className="text-base text-gray-600 max-w-xl mx-auto font-light">
+            Meaningful and affordable products inspired by deep appreciation of beauty
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
-            <Card 
+            <div 
               key={product.id} 
-              className="group cursor-pointer border-0 bg-card hover:shadow-medium transition-all duration-300 hover:-translate-y-1"
+              className="group cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
             >
-              <CardContent className="p-0">
-                <div className="relative aspect-square overflow-hidden rounded-t-lg">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  
-                  {/* Badge */}
-                  {product.badge && (
-                    <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-medium ${
-                      product.badge === 'Sale' ? 'bg-destructive text-destructive-foreground' :
-                      product.badge === 'Bestseller' ? 'bg-primary text-primary-foreground' :
-                      'bg-accent text-accent-foreground'
-                    }`}>
-                      {product.badge}
-                    </div>
-                  )}
-                  
-                  {/* Wishlist */}
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="absolute top-3 right-3 w-8 h-8 bg-white/80 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <Heart className="w-4 h-4" />
-                  </Button>
+              <div className="relative aspect-square overflow-hidden bg-gray-100 mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                />
+                
+                {/* Badge */}
+                {product.badge && (
+                  <div className={`absolute top-2 left-2 px-2 py-1 text-xs font-medium ${
+                    product.badge === 'Sale' ? 'bg-red-500 text-white' :
+                    product.badge === 'Bestseller' ? 'bg-gray-900 text-white' :
+                    'bg-gray-700 text-white'
+                  }`}>
+                    {product.badge}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                {/* Rating */}
+                <div className="flex items-center gap-1 mb-1">
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-gray-800 text-gray-800' : 'text-gray-300'}`} 
+                      />
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-500">
+                    ({product.reviews})
+                  </span>
                 </div>
 
-                <div className="p-4">
-                  {/* Rating */}
-                  <div className="flex items-center gap-1 mb-2">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-primary text-primary' : 'text-muted-foreground'}`} 
-                        />
-                      ))}
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      {product.rating} ({product.reviews})
-                    </span>
-                  </div>
+                {/* Product Info */}
+                <h3 className="text-sm font-medium text-gray-900">
+                  {product.name}
+                </h3>
 
-                  {/* Product Info */}
-                  <h3 className="font-semibold text-foreground mb-1">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {product.description}
-                  </p>
-
-                  {/* Price */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="font-bold text-lg text-foreground">
-                      ${product.price}
+                {/* Price */}
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-gray-900">
+                      {product.price}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        ${product.originalPrice}
+                      <span className="text-xs text-gray-500 line-through">
+                        {product.originalPrice}
                       </span>
                     )}
                   </div>
-
-                  {/* Add to Cart */}
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    Add to Cart
-                  </Button>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-600">
+                      {product.priceUSD}
+                    </span>
+                    {product.originalPriceUSD && (
+                      <span className="text-xs text-gray-400 line-through">
+                        {product.originalPriceUSD}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-10">
-          <Button variant="outline" size="lg" className="px-8">
-            View All Products
-          </Button>
+        <div className="text-center mt-16">
+          <button 
+            onClick={() => {
+              const message = `Hi ODIN Living! I'm interested in viewing your complete collection of ceramic products. Could you share more details?`;
+              const whatsappUrl = `https://wa.me/2349035643110?text=${encodeURIComponent(message)}`;
+              window.open(whatsappUrl, '_blank');
+            }}
+            className="text-sm text-gray-900 border-b border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors duration-300"
+          >
+            Order via WhatsApp
+          </button>
         </div>
       </div>
     </section>

@@ -33,46 +33,39 @@ const categories = [
 
 const ProductCategories = () => {
   return (
-    <section className="py-16 bg-background">
-      <div className="container px-4">
+    <section id="categories" className="py-16 bg-white">
+      <div className="container px-4 max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mb-4">
+          <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4">
             Shop by Category
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our carefully curated collections of handcrafted ceramics, 
-            each piece telling its own story of artisanal excellence.
+          <p className="text-base text-gray-600 max-w-xl mx-auto font-light">
+            Discover our carefully curated collections of handcrafted ceramics
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map((category) => (
-            <Card 
+            <div 
               key={category.name} 
-              className="group cursor-pointer border-0 bg-card hover:shadow-medium transition-all duration-300 hover:-translate-y-1"
+              className="group cursor-pointer"
             >
-              <CardContent className="p-0">
-                <div className="aspect-square relative overflow-hidden rounded-t-lg">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="font-semibold text-foreground text-lg mb-1">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {category.description}
-                  </p>
-                  <p className="text-xs text-primary font-medium">
-                    {category.count}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="aspect-square relative overflow-hidden bg-gray-100 mb-4">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+              <div className="text-center space-y-1">
+                <h3 className="text-sm font-medium text-gray-900">
+                  {category.name}
+                </h3>
+                <p className="text-xs text-gray-600">
+                  {category.count}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
