@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
@@ -147,6 +147,17 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const product = productData[Number(id) as keyof typeof productData];
+
+  // Scroll to top when component mounts or product ID changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  // Reset image index and quantity when product changes
+  useEffect(() => {
+    setCurrentImageIndex(0);
+    setQuantity(1);
+  }, [id]);
 
   if (!product) {
     return (
